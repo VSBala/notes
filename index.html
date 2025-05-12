@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XML Table Viewer</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <script src="static/script.js"></script>
+</head>
+<body>
+
+    <h2>Data Table with Advanced Filtering</h2>
+    <table border="1" id="dataTable">
+        <tr>
+            {% for header in headers %}
+                <th>
+                    {{ header }}<br>
+                    <input type="text" class="filter-input" placeholder="e.g., John OR Jon OR blank">
+                </th>
+            {% endfor %}
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            {% for header in headers %}
+                <td>{{ entry[header] }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <button id="prevPage">Previous</button>
+        <span id="page-info">Page 1</span>
+        <button id="nextPage">Next</button>
+    </div>
+
+</body>
+</html>
